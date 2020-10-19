@@ -1,0 +1,75 @@
+body {
+    overflow-x: hidden;
+}
+
+.dropdown-menu.show{
+    width: 178px;
+}
+
+.favorite {
+    display: flex;
+    margin: auto;
+}
+
+.btn.btn-success.btn-sm.all{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.card-img-right{
+max-width: 40%;
+max-height: 40%;
+}
+
+.col-sm-2 {
+margin-top: 70px;
+}
+
+.sidebar-right {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.fas.fa-address-card {
+    width: 25px;
+    height: 20px;
+}
+
+.fas.fa-pencil-alt {
+    width: 25px;
+    height: 20px;
+}
+
+.fas.fa-user-shield {
+    width: 25px;
+    height: 20px;
+}
+
+.fas.fa-sign-out-alt {
+    width: 25px;
+    height: 20px;
+}
+
+.navbar-nav.mr-auto {
+    display: flex;
+    flex-direction: row;
+    padding-right: 50px;
+}
+
+@media only screen and (max-width: 1350px) {
+    .sidebar-right {
+        display: none;
+    }
+    .sidebar-left {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .card-img-right {
+        display:none !important;
+    }
+}
