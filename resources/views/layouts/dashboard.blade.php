@@ -26,8 +26,13 @@
             <li><a href="{{ url('/admin/users') }}" class="margin">Gebruikers</a></li>
             <li><a href="{{ url('/admin/posts') }}" class="margin">Posts</a></li>
             <li><a href="{{ url('/admin/FAQ') }}" class="margin">FAQ</a></li>
+<<<<<<< HEAD
+            <li><a href="{{ url('/admin/keukens')}}" class="margin">Keukenzaken</a></li>
+        <li><a href="{{url('/admin/aanvragen')}}" class="margin">Aanvragen</a></li>
+=======
             <li><a href="{{url('/admin/aanvragen')}}" class="margin">Aanvragen</a></li>
             <li><a href="{{url('/admin/links')}}" class="margin">Links</a></li>
+>>>>>>> c81121549209ffd492d9da73c94461dce591a664
         </ul>
     </div>
         <main class="main">

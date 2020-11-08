@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role')->default('user');
             $table->string('blocked')->default('0');
+            $table->string('keukenzaak')->default('0');
             $table->string('avatar')->default('nopfp.jpg');
             $table->rememberToken();
             $table->timestamps();

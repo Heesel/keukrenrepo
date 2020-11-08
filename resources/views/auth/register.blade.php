@@ -78,7 +78,7 @@
                                     {{ __('Register') }}
                                 </button>
                                 <a class="btn btn-link" href="/keukenfabrikant">
-                                    Registreer als keukenfabrikant
+                                    Registreer als keukenspeciaalzaak
                                 </a>
                             </div>
                         </div>
