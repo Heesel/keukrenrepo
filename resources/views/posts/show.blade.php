@@ -12,7 +12,11 @@
         </h4>
     </div>
     <hr>
-    <div class="row">
+    <h5>Deel dit via: </h5>
+    <button class="btn btn-sm btn-whatsapp" href="https://wa.me/?text=https://www.keukenfabrikant.nl"><i class="fab fa-whatsapp"></i> Whatsapp</button>
+         <div class="fb-share-button" data-href="https://www.keukenfabrikant.nl" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.keukenfabrikant.nl%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Delen</a></div>
+         <!-- <a href="http://www.facebook.com/share.php?u=httpskeukenfabrikant.nl/posts/{{$post->id}}"><div class="btn btn-sm btn-primary">Facebook2</div></a> -->
+        <div class="row">
         @if(!Auth::guest())
             @if(Auth::user()->id == $post->user_id)
                 <a href="/posts/{{$post->id}}/edit" class="btn btn-trash">Bewerken</a>

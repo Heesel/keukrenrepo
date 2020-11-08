@@ -38,6 +38,8 @@ Route::post('comments/{post_id}', ['as' => 'comments.stored', 'uses' => 'Comment
 route::resource('comments', 'CommentsController');
 route::resource('admin/FAQ', 'FAQAdminController');
 route::get('/faq', 'FAQController@index');
+route::get('/links', 'LinksController@index');
+Route::resource('admin/links', 'LinksAdminController');
 route::resource('profile', 'profileController');
 Route::group(['middleware' => ['auth']], function(){
 Route::post('favorite/{post}/add', 'FavoriteController@add')->name('post.favorite');
