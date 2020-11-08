@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Keukenfabrikant;
+use App\User;
 use DB;
+<<<<<<< HEAD
 use App\User;
 use Auth;
+=======
+use App\Rules\Captcha;
+use Illuminate\Support\Facades\Hash;
+>>>>>>> c81121549209ffd492d9da73c94461dce591a664
 
 class KeukenfabrikantController extends Controller
 {
@@ -21,13 +27,15 @@ class KeukenfabrikantController extends Controller
         $this->validate($request, [
             'bedrijfsnaam' => 'required',
             'bedrijfswebsite' => 'required',
-            'plaats' => 'required',
-            'straatnaam' => 'required',
-            'huisnummer' => 'required',
-            'postcode' => 'required',
+            'plaats' => 'required|min:3',
+            'straatnaam' => 'required|min:3',
+            'huisnummer' => 'required|integer',
+            'postcode' => 'postal_code:NL,BE',
             'email' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:6',
             'password_confirmation' => 'required',
+            'g-recaptcha-response' => new Captcha(),
+            
         ]);
 
         $keukenfabrikant = new Keukenfabrikant;
@@ -41,6 +49,16 @@ class KeukenfabrikantController extends Controller
         $keukenfabrikant->password = $request->input('password');
         $keukenfabrikant->approved = 0;
         $keukenfabrikant->save();
+
+        $Ukeukenfabrikant = new User;
+        $Ukeukenfabrikant->name = $request->input('bedrijfsnaam');
+        $Ukeukenfabrikant->email = $request->input('email');
+        $Ukeukenfabrikant->password = Hash::make($request->input('password'));
+        $Ukeukenfabrikant->role = 'user';
+        $Ukeukenfabrikant->blocked = 0;
+        $Ukeukenfabrikant->save();
+        
+
         return redirect('keukenfabrikant')->with('succes', 'Aanvraag succesvol verzonden');
     }
 
@@ -60,10 +78,14 @@ class KeukenfabrikantController extends Controller
 
         if(auth()->user()->role == 'admin') {
             DB::table('keukenfabrikant')->where('id', $id)->update(['approved' => '1']);
+<<<<<<< HEAD
             // $user = User::find($bedrijf->email);
             // $user->email = $bedrijf->id;
             // $user->save();
             return redirect('/admin/aanvragen')->with('succes', 'Goedgekeurd');
+=======
+           return redirect('/admin/aanvragen')->with('succes', 'Goedgekeurd');
+>>>>>>> c81121549209ffd492d9da73c94461dce591a664
 
         } 
         else if(auth()->user()->id !== $user->id) {

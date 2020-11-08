@@ -36,7 +36,12 @@
 										Vul een geldige email in
 									  </div>
 								   </div>
-								   
+								   <div class="form-group">
+									<input type="text" class="form-control" name="confirmEmail" placeholder="Bevestig e-mail" required>
+									<div class="invalid-feedback">
+										E-mail komt niet overeen.
+									  </div>
+								   </div>
 							       <div class="form-group">
 								      <input type="text" class="form-control" name="phone" placeholder="Telefoonnummer (Niet verplicht)">
 								    </div>

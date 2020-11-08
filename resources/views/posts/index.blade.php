@@ -30,6 +30,8 @@
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" alt="" src="/storage/cover_images/{{$post->cover_image}}" style="width: 275px; height: 225px;">
          </div>
+         <button class="btn btn-sm btn-whatsapp" href="https://wa.me/?text=https://www.keukenfabrikant.nl"><i class="fab fa-whatsapp"></i> Whatsapp</button>
+         <div class="fb-share-button" data-href="https://www.keukenfabrikant.nl" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.keukenfabrikant.nl%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Delen</a></div>
       </div>
       @endforeach
       @else

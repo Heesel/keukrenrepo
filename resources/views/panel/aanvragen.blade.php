@@ -31,7 +31,7 @@
                 <td>
                     <form action="/keukenfabrikant/goedkeuren/{{$bedrijf->id}}" method="POST">
                         @csrf
-                        <button value="{{ $bedrijf->id }}" class="btn btn-succes"><i class="fas fa-check"></i></form>
+                        <button value="{{ $bedrijf->id }}" class="btn btn-success"><i class="fas fa-check"></i></form>
                     </form>
                 </td>
 
