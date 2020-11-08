@@ -142,6 +142,12 @@ max-height: 40%;
     margin-top: -1.5%;
 }
 
+.btn-app {
+  background-color: #5cb85c;
+    color: white;
+    margin-top: -0.5%;
+}
+
 /* Alle media screen widths komen hieronder. Deze zorgen ervoor dat wanneer de grootte on het max-aantal pixels zit de volgende css word toegepast */
 
 @media only screen and (max-width: 1350px) {
