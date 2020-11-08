@@ -41,6 +41,13 @@ return [
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
+            'stream' => [
+                'ssl' => [
+                    'allow_self_signed' => true,
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ]
         ],
 
         'ses' => [
@@ -73,7 +80,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'keukenfabrikant@outlook.com', 'name' => 'Keukenfabrikant'],
+    'from' => ['address' => 'mail@keukenfabrikant.nl', 'name' => 'Keukenfabrikant'],
 
     /*
     |--------------------------------------------------------------------------
