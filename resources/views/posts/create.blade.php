@@ -4,7 +4,7 @@
         html { scroll-behavior: smooth; }
     </style>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <h2>Create Post</h2>
+    <h2>Advertentie aanmaken</h2>
     {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
         <div class="custom-file">
@@ -22,9 +22,11 @@
         </div>
         <div class="form-group">
             {{Form::label('type', 'Type')}}<br>
-            {{Form::select('type', array('' => 'Selecteer een type post', 
-                                         'news' => 'Nieuws', 
-                                         'keuken' => 'Keukens'), null, ['class' => 'box'])}}
+            @if(auth::user()->role == 'admin')
+            {{Form::select('type', array('news' => 'Nieuws'))}}
+            @else 
+            {{Form::select('type', array('keuken' => 'Advertentie'))}}
+            @endif
         </div>
         {{Form::submit('Submit', ['class' =>'btn btn-success'])}}
     {!! Form::close() !!}

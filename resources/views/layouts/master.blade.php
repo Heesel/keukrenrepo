@@ -21,6 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/5a37eae510.js" crossorigin="anonymous"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/16.0.0/classic/ckeditor.js"></script>
     <script src="https://kit.fontawesome.com/5a37eae510.js" crossorigin="anonymous"></script>
@@ -56,7 +57,7 @@
                     @yield('content')
                 </div>
 
-                <div class="col-sm-2">
+                <div class="col-sm-2 right">
                     <div class="sidebar-right">
                         <img src="/storage/keukenbanner.jpg"></img>
                     </div>

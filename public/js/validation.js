@@ -58,6 +58,20 @@ $('#validation').bootstrapValidator({
                 }
             }
         },
+
+        confirmEmail: {
+            validators: {
+                notEmpty: {
+                    message: 'Vul je e-mail adress in'
+                },
+                identical: {
+                    field: 'email',
+                    message: 'Het e-mail adress komt niet overeen'
+                }
+            }
+         },
+
+        
         password: {
             validators: {
                 notEmpty: {
