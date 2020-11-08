@@ -28,6 +28,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="/storage/icon.png">
     <title>{{ config('app.name') }}</title>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v8.0&appId=405145980731967&autoLogAppEvents=1" nonce="WpJH2jxc"></script>
     </head>
     <body>
     <!-- Authentication Links -->
@@ -37,6 +39,13 @@
         </div>
         <br>
             @include('inc.messages')
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="topbanner">
+                        <img src="/storage/topbanner.jpg"></img>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-2">
                     <div class="sidebar-left">
@@ -50,7 +59,7 @@
 
                 <div class="col-sm-2 right">
                     <div class="sidebar-right">
-                        <img src="/storage/keukenbanner.jpg" />
+                        <img src="/storage/keukenbanner.jpg"></img>
                     </div>
                 </div>
     @endguest
@@ -80,25 +89,40 @@
             </form>
         </div>
     @else 
-        <div id="app">
-            @include('partials.navbar')
-        </div>
-        <br>
-            @include('inc.messages')
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="sidebar-left">
-                            <img src="/storage/keukenbanner.jpg"></img>
+        
+            <div id="app">
+                @include('partials.navbar')
+            </div>
+            <br>
+                @include('inc.messages')
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div class="topbanner">
+                                <img src="/storage/topbanner.jpg"></img>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-sm-8">
-                    @yield('content')
+                <div class="row">
+                    <div class="col-md-8">
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="sidebar-left">
+                                <img src="/storage/keukenbanner.jpg"></img>
+                        </div>
+                    </div>
 
-                <div class="col-sm-2 right">
-                    <div class="sidebar-right">
-                        <img src="/storage/keukenbanner.jpg"></img>
+                    <div class="col-sm-8">
+                        @yield('content')
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="sidebar-right">
+                            <img src="/storage/keukenbanner.jpg"></img>
+                        </div>
                     </div>
                 </div>
     @endif

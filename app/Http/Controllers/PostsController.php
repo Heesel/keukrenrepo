@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Storage;
 
 
+
 class PostsController extends Controller
 {
     /**
@@ -150,9 +151,51 @@ class PostsController extends Controller
                 Storage::delete('public/cover_images/' . $post->cover_image);
             }
             $post->cover_image = $fileNameToStore;
+        } else {
+            $fileNameToStore = 'default.jpg';
         }
         $post->save();
 
         return redirect('/')->with('success', 'Post Updated');
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            //create original filename
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //store image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+         
+
+        //create
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->type = $request->input('type');
+        $post->user_id = auth()->user()->id;      
+        $post->user_role = auth()->user()->role;
+        $post->cover_image = $fileNameToStore;
+        $post->save();
+
+        return redirect('/')->with('success', 'Post Created');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+
+        if(auth()->user()->role == 'admin') {} 
+        else if(auth()->user()->id !== $post->user_id) {
+            return redirect('/')->with('error', 'Unauthorized page');
+        } 
+
+        // if($post->cover_image != 'default.jpg') {
+        // Storage::delete('public/cover_images/' . $post->cover_image);
+        // }
+        $post->delete();
+        return redirect('/')->with('success', 'Post Deleted');
     }
 }
