@@ -7,19 +7,6 @@
 <div class="container">
 <style>
    .profile-pic {
-    display: false;
-    position: absolute;
-    margin: false;
-    top: -90px;
-    left: 50%;
-    right: false;
-    bottom: false;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-    height: 180px;
-    width: 180px;
-    border: 10px solid #fff;
-    border-radius: 100%;
     background: url("/storage/uploads/avatars/{{$user->avatar}}") center no-repeat;
     background-size: cover;
   }

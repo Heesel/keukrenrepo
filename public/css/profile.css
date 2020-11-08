@@ -174,4 +174,20 @@
       margin: 50px auto 30px;
     }
   }
+
+.profile-pic {
+    display: false;
+    position: absolute;
+    margin: false;
+    top: -90px;
+    left: 50%;
+    right: false;
+    bottom: false;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    height: 180px;
+    width: 180px;
+    border: 10px solid #fff;
+    border-radius: 100%;
+  }
   

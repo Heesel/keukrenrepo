@@ -7,6 +7,8 @@ use App\Post;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 
+
+
 class PostsController extends Controller
 {
     /**
@@ -49,7 +51,7 @@ class PostsController extends Controller
             'title' => 'required' ,
             'body' => 'required',
             'type' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999|mimes:jpeg,jpg,png'
         ]);   
 
         if($request->hasFile('cover_image')) {
@@ -131,15 +133,40 @@ class PostsController extends Controller
             //get only file name
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             //get only extension
+            $extension = $request->file('coverimage')->getClientOriginalExtension();
+            //create original filename
+            $fileNameToStore = $filename.''.time().'.'.$extension;
+            //store image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } 
+
+        //update
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        if($request->input('type') != 'empty'){
+            $post->type = $request->input('type');
+        }
+        if($request->hasFile('cover_image')){
+            if($post->cover_image != 'default.jpg') {
+                Storage::delete('public/cover_images/' . $post->cover_image);
+            }
+            $post->cover_image = $fileNameToStore;
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
+        $post->save();
+
+        return redirect('/')->with('success', 'Post Updated');
             $extension = $request->file('cover_image')->getClientOriginalExtension();
             //create original filename
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             //store image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } 
-        
-        //update
-        $post = Post::find($id);
+         
+
+        //create
+        $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         if($request->input('type') != 'empty'){
