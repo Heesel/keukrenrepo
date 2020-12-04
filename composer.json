@@ -19,7 +19,6 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
-        "mollie/laravel-mollie": "2.0",
         "phpmailer/phpmailer": "^6.1"
     },
     "require-dev": {
