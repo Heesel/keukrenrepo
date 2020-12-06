@@ -90,7 +90,8 @@ class profileController extends Controller
     {
         $this->validate($request, [
             'name' => 'required' ,
-            'email' => 'required'
+            'email' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);    
 
         if($request->hasFile('avatar')) {

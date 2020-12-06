@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 
 class userController extends Controller

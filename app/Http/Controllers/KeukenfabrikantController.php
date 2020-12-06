@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Keukenfabrikant;
 use App\User;
 use DB;
+use Auth;
 use App\Rules\Captcha;
 use Illuminate\Support\Facades\Hash;
 
@@ -73,7 +74,10 @@ class KeukenfabrikantController extends Controller
 
         if(auth()->user()->role == 'admin') {
             DB::table('keukenfabrikant')->where('id', $id)->update(['approved' => '1']);
-           return redirect('/admin/aanvragen')->with('succes', 'Goedgekeurd');
+            // $user = User::find($bedrijf->email);
+            // $user->email = $bedrijf->id;
+            // $user->save();
+            return redirect('/admin/aanvragen')->with('succes', 'Goedgekeurd');
 
         } 
         else if(auth()->user()->id !== $user->id) {

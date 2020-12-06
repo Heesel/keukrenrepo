@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="card">
                 <div class="card-header">
-                    <p class="green-text">Keukenfabrikant | Aanvraagformulier</p></div>
+                    <p class="green-text">Keukenzaak | Aanvraagformulier</p></div>
                 <div class="card-body">
                     <form method="POST" action="/aanvragen">
                         @csrf

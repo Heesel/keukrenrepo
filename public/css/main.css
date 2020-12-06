@@ -5,6 +5,10 @@
     background-color: none;
 }
 
+nav {
+    z-index: 1;
+}
+
 
 
 .custom-input:focus {

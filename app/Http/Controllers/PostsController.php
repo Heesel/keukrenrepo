@@ -122,8 +122,9 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required' ,
-            'body' => 'required'
-        ]);
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
+        ]);    
 
          //file
          if($request->hasFile('cover_image')) {
@@ -168,13 +169,18 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->type = $request->input('type');
-        $post->user_id = auth()->user()->id;      
-        $post->user_role = auth()->user()->role;
-        $post->cover_image = $fileNameToStore;
+        if($request->input('type') != 'empty'){
+            $post->type = $request->input('type');
+        }
+        if($request->hasFile('cover_image')){
+            if($post->cover_image != 'default.jpg') {
+                Storage::delete('public/cover_images/' . $post->cover_image);
+            }
+            $post->cover_image = $fileNameToStore;
+        }
         $post->save();
-
-        return redirect('/')->with('success', 'Post Created');
+        
+        return redirect('/')->with('success', 'Post Updated');
     }
 
     /**
