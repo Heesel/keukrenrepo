@@ -5,6 +5,7 @@
     <h2>Vraag aanmaken</h2>
      {!! Form::open(['action' => ['FAQAdminController@update', $question->id], 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
+        {{Form::file('cover_image')}}
     </div>
         <div class="form-group">
             {{Form::label('question', 'Vraag')}}

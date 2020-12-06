@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Keukenfabrikant;
 use App\User;
+use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-
-
 
 class PostsController extends Controller
 {
@@ -76,6 +77,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->user_id = auth()->user()->id;      
         $post->user_role = auth()->user()->role;
+        $post->active_till = Carbon::now()->addMonth(3);
         $post->cover_image = $fileNameToStore;
         $post->save();
         
@@ -139,34 +141,9 @@ class PostsController extends Controller
             //store image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
         } 
-
+        
         //update
         $post = Post::find($id);
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        if($request->input('type') != 'empty'){
-            $post->type = $request->input('type');
-        }
-        if($request->hasFile('cover_image')){
-            if($post->cover_image != 'default.jpg') {
-                Storage::delete('public/cover_images/' . $post->cover_image);
-            }
-            $post->cover_image = $fileNameToStore;
-        } else {
-            $fileNameToStore = 'default.jpg';
-        }
-        $post->save();
-
-        return redirect('/')->with('success', 'Post Updated');
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            //create original filename
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;
-            //store image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-         
-
-        //create
-        $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         if($request->input('type') != 'empty'){

@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->mediumText('body');
             $table->timestamps();
+            $table->date('active_till');
             $table->string('type');
             $table->integer('user_id');
             $table->string('user_role');

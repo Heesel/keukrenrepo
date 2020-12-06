@@ -37,6 +37,7 @@ route::resource('admin/users', 'userController');
 Route::post('comments/{post_id}', ['as' => 'comments.stored', 'uses' => 'CommentsController@store']);
 route::resource('comments', 'CommentsController');
 route::resource('admin/FAQ', 'FAQAdminController');
+route::resource('admin/keukens', 'keukenAdminController');
 route::get('/faq', 'FAQController@index');
 route::get('/links', 'LinksController@index');
 Route::resource('admin/links', 'LinksAdminController');

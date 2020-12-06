@@ -71,12 +71,9 @@ class KeukenfabrikantController extends Controller
     {
         $bedrijf = Keukenfabrikant::find($id);
 
-
         if(auth()->user()->role == 'admin') {
             DB::table('keukenfabrikant')->where('id', $id)->update(['approved' => '1']);
-            // $user = User::find($bedrijf->email);
-            // $user->email = $bedrijf->id;
-            // $user->save();
+            DB::table('users')->where('email', $bedrijf->email)->update(['keukenzaak' => $bedrijf->id]);
             return redirect('/admin/aanvragen')->with('succes', 'Goedgekeurd');
 
         } 
