@@ -66,6 +66,7 @@ class PostsAdminController extends Controller
         $post->type = $request->input('type');
         $post->user_id = auth()->user()->id;      
         $post->user_role = auth()->user()->role;
+        $post->active_till = Carbon::now()->addMonth(3);
         $post->cover_image = $fileNameToStore;
         $post->save();
 
