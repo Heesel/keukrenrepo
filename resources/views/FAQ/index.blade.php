@@ -23,6 +23,7 @@
             </p>
         <!-- antwoord dat uitklapt -->
         <div class="collapse" id="collapse{{$question->id}}">
+            <img class="postimage" src="/storage/faq_img/{{$question->img}}">
             <div class="card card-body">
                {{ $question->answer }}
             </div>

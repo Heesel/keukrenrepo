@@ -5,6 +5,7 @@
     <h2>Vraag aanmaken</h2>
     {!! Form::open(['action' => 'FAQAdminController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
+        {{Form::file('img')}}
     </div>
     <div class="form-group">
         <div class="custom-file">

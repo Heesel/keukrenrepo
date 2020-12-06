@@ -1,8 +1,8 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
     <a class="navbar-brand" href="{{ url('/') }}">
-        <img src="https://keukenfabrikant.nl/wp-content/uploads/2018/05/keukenfabrikant-1200280-300x70.png"
-        alt="logo" height="60px" alt="LogoInfocus">
+        {{-- <img src="https://keukenfabrikant.nl/wp-content/uploads/2018/05/keukenfabrikant-1200280-300x70.png"
+        alt="logo" height="60px" alt="LogoInfocus"> --}}
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
         <span class="navbar-toggler-icon"></span>
@@ -71,7 +71,11 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">  
                             <a class="dropdown-item" type="button" href="/profile/{{Auth::user()->id}}"><i class="fas fa-address-card"></i>Profielpagina</a>                  
+                            @if(auth::user()->role == 'admin')
                             <a class="dropdown-item" type="button" href="/posts/create"><i class="fas fa-pencil-alt"></i>Maak Post</a>
+                            @elseif(auth::user()->keukenzaak > '0')
+                            <a class="dropdown-item" type="button" href="/posts/create"><i class="fas fa-pencil-alt"></i>Maak Post</a>
+                            @endif
                             <a class="dropdown-item" type="button" href="/overzicht"><i class="fas fa-pencil-alt"></i>post overzicht</a>
                             @if(Auth::user()->role == 'admin')
                                 <a class="dropdown-item" type="button" href="/admin/users"><i class="fas fa-user-shield"></i>Admin paneel</a>
