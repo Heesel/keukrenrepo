@@ -58,7 +58,7 @@
                     }
                 </style>
                 <li class="nav-item">
-                    <a href="/faq" class="nav-link">Veelgestelde vragen</a>
+                    <a href="/faq" class="nav-link">Veelgestelde vragen </a>
                 </li>
                 <li class="nav-item">
                     <a href="/contact" class="nav-link">contact</a>

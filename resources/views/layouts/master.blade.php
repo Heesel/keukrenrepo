@@ -35,31 +35,37 @@
     <!-- Authentication Links -->
     @guest
     <div id="app">
+    <div class="container">
             @include('partials.navbar')
         </div>
         <br>
             @include('inc.messages')
             <div class="row">
-                <div class="col-md-12">
-                    <div class="topbanner">
-                        <img src="/storage/topbanner.jpg"></img>
+                    <div class="col-md-12">
+                        <div class="container">
+                                <img src="/storage/topbanner.jpg" class="topbanner"></img>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="sidebar-left">
-                            <img src="/storage/keukenbanner.jpg"></img>
+                <div class="row">
+                    <div class="col-md-8">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="sidebar-left">
+                                <img src="/storage/keukenbanner.jpg" class="sidebar-img"></img>
+                        </div>
+                    </div>
 
-                <div class="col-sm-8">
-                    @yield('content')
-                </div>
+                    <div class="col-sm-8">
+                        @yield('content')
+                    </div>
 
-                <div class="col-sm-2 right">
-                    <div class="sidebar-right">
-                        <img src="/storage/keukenbanner.jpg"></img>
+                    <div class="col-sm-2">
+                        <div class="sidebar-right">
+                            <img src="/storage/keukenbanner.jpg" class="sidebar-img"></img>
+                        </div>
                     </div>
                 </div>
     @endguest
@@ -98,9 +104,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="container">
-                            <div class="topbanner">
-                                <img src="/storage/topbanner.jpg"></img>
-                            </div>
+                                <img src="/storage/topbanner.jpg" class="topbanner"></img>
                         </div>
                     </div>
                 </div>
@@ -111,7 +115,7 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="sidebar-left">
-                                <img src="/storage/keukenbanner.jpg"></img>
+                                <img src="/storage/keukenbanner.jpg" class="sidebar-img"></img>
                         </div>
                     </div>
 
@@ -121,11 +125,12 @@
 
                     <div class="col-sm-2">
                         <div class="sidebar-right">
-                            <img src="/storage/keukenbanner.jpg"></img>
+                            <img src="/storage/keukenbanner.jpg" class="sidebar-img"></img>
                         </div>
                     </div>
                 </div>
     @endif
     @endauth
+    </div>
 </body>
 </html>

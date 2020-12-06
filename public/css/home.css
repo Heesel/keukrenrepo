@@ -28,17 +28,26 @@ max-height: 40%;
     margin-top: -13%;
 } 
 
+.col-md-6 {
+  margin-bottom: 5%;
+}
+
 .sidebar-left {
-    display: flex;
-    position: fixed;
-    justify-content: flex-start;
+    height: 100%;
+    width: auto;
 }
 
 .sidebar-right {
-    display: flex;
     justify-content: flex-end;
-    position: fixed;
-    right: 0;
+    width:  100%;
+    height: auto;
+    margin-left: 35%;
+}
+
+.sidebar-img {
+    width: 60%;
+    height: auto;
+    margin: auto;
 }
 
 .fas.fa-address-card {
@@ -127,14 +136,12 @@ max-height: 40%;
     margin-bottom: 12px;
   }
   
-  .topbanner {
-      display: flex;
-      top: 0;
-      margin: auto;
-      margin-bottom: 20px;
-      justify-content: center;
-      max-width: 100%;
-  }
+.topbanner {
+    display: flex;
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
 
   .btn-whatsapp {
     background-color: #5cb85c;
@@ -142,26 +149,44 @@ max-height: 40%;
     margin-top: -1.5%;
 }
 
+.btn-facebook {
+    background-color: #3b5998;
+    color: white;
+    margin-top: -1.5%;
+}
+
 .btn-app {
-  background-color: #5cb85c;
+    background-color: #5cb85c;
     color: white;
     margin-top: -0.5%;
 }
 
-/* Alle media screen widths komen hieronder. Deze zorgen ervoor dat wanneer de grootte on het max-aantal pixels zit de volgende css word toegepast */
-
-@media only screen and (max-width: 1350px) {
-    .sidebar-right {
-        display: none;
-    }
-    .sidebar-left {
-        display: none;
-    }
+.btn-all {
+    margin: auto;
+    margin-top: 5px;
 }
+
+.dropdown-toggle {
+    margin-left: 10%;
+
+}
+
+/* Alle media screen widths komen hieronder. Deze zorgen ervoor dat wanneer de grootte on het max-aantal pixels zit de volgende css word toegepast */
 
 @media only screen and (max-width: 500px) {
     .btn-whatsapp {
       margin-top: 0;
     }
 }
+/* Dit is de wijdte waar het normale menu inklapt naar hamburger menu */
+@media only screen and (max-width: 844px) {
 
+    .nav-item{
+      margin-right: 10px;
+    }
+
+    .dropdown {
+      justify-content: flex-end;
+    }
+
+}

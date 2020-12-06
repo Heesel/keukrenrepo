@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
 
-
       <h3 class="pb-3 mb-4 border-bottom">
          Keukens
       </h3>
@@ -30,14 +29,14 @@
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" alt="" src="/storage/cover_images/{{$post->cover_image}}" style="width: 275px; height: 225px;">
          </div>
-         <button class="btn btn-sm btn-whatsapp" href="https://wa.me/?text=https://www.keukenfabrikant.nl"><i class="fab fa-whatsapp"></i> Whatsapp</button>
-         <div class="fb-share-button" data-href="https://www.keukenfabrikant.nl" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.keukenfabrikant.nl%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Delen</a></div>
+         <a class="btn btn-sm btn-success btn-whatsapp" target="_blank" href="https://api.whatsapp.com/send?text=Bekijk deze keuken eens! https%3A%2F%2Fkeukenfabrikant.nl%2F{{ $post->id }}"> <i class="fab fa-whatsapp"></i> Whatsapp</a>
+         <a class="btn btn-sm btn-success btn-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://keukenfabrikant.nl/{{ $post->id }}"> <i class="fab fa-facebook"></i> Delen</a>
       </div>
       @endforeach
       @else
          <p>no posts found</p>
       @endif
-      <a class="btn btn-success btn-sm all" href="/keukens">Bekijk alle keukens</a>
+      <a class="btn btn-success btn-sm btn-all" href="/keukens">Bekijk alle keukens</a>
       </div>
          
       <h3 class="mt-3 pb-3 mb-4 border-bottom">
@@ -65,7 +64,7 @@
    @else
       <p>no posts found</p>
    @endif
-   <a class="btn btn-success btn-sm all" href="/keukens">Bekijk al het niews</a>
+   <a class="btn btn-success btn-sm btn-all" href="/keukens">Bekijk al het niews</a>
      </div>
      
      <!-- </div> -->

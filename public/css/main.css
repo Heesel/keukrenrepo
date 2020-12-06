@@ -24,3 +24,8 @@
 .card-header {
     background-color: #38c172 !important;
 }
+
+nav {
+    z-index: 1;
+}
+
