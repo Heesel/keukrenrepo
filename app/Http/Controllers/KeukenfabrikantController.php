@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Keukenfabrikant;
+use App\User;
+use Auth;
 use DB;
 
 class KeukenfabrikantController extends Controller
@@ -55,9 +57,9 @@ class KeukenfabrikantController extends Controller
     {
         $bedrijf = Keukenfabrikant::find($id);
 
-
         if(auth()->user()->role == 'admin') {
             DB::table('keukenfabrikant')->where('id', $id)->update(['approved' => '1']);
+            DB::table('users')->where('email', $bedrijf->email)->update(['keukenzaak' => $bedrijf->id]);
             return redirect('/admin/aanvragen')->with('succes', 'Goedgekeurd');
 
         } 

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
 
-        <form action="/search" method="GET">
+        <form action="/finduser" method="GET">
         <div class="search">
             <input type="text" class="searchTerm" name="pUser" placeholder="Gebruikersnaam...">
             <button type="submit" class="searchButton">

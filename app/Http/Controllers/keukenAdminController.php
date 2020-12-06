@@ -3,43 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
+use App\Keukenfabrikant;
 use App\User;
 use Auth;
-use App\Http\Controllers\Controller;
 use DB;
 
-class HomeController extends Controller
+class keukenAdminController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Display a listing of the resource.
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = Post::all();
-            return view('panel.posts')->with('posts', $posts);
+        $bedrijven = DB::select('select * from keukenfabrikant');
+        return view('panel.keukenzaken')->with('bedrijven', $bedrijven);
     }
 
     public function search(Request $request)
     {
-        $posts = Post::all();
-        $posts = DB::select('select * from posts');
+        $bedrijven = DB::select('select * from keukenfabrikant');
 
-        $search = $request->input('pPost');
-        $results = DB::table('posts')->where('title', 'LIKE', "%{$search}%")->get();
-        return view('panel.posts', ['search' => $results], ['posts'=>$posts]);
+        $search = $request->input('pBedrijf');
+        $results = DB::table('keukenfabrikant')->where('Bedrijfsnaam', 'LIKE', "%{$search}%")->get();
+        return view('panel.keukenzaken', ['search' => $results], ['bedrijven'=>$bedrijven]);
     }
 
     /**

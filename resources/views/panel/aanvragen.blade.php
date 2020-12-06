@@ -11,7 +11,6 @@
                 <th scope="col">Straatnaam</th>
                 <th scope="col">Huisnummer</th>
                 <th scope="col">Postcode</th>
-                <th scope="col">Bedrijfsnummer</th>
                 <th scope="col">email</th>
                 <th scope="col">Goedkeuren</th>
                 <th scope="col">Afwijzen</th>
@@ -27,7 +26,6 @@
                 <td>{{$bedrijf->straatnaam}}</td>
                 <td>{{$bedrijf->huisnummer}}</td>
                 <td>{{$bedrijf->postcode}}</td>
-                <td>{{$bedrijf->bedrijfsnummer}}</td>
                 <td>{{$bedrijf->email}}</td>
                 {{-- Goedkeur formulier --}}
                 <td>

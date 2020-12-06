@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Keukenfabrikant;
 use App\User;
+use DB;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -73,6 +77,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->user_id = auth()->user()->id;      
         $post->user_role = auth()->user()->role;
+        $post->active_till = Carbon::now()->addMonth(3);
         $post->cover_image = $fileNameToStore;
         $post->save();
         
@@ -120,11 +125,11 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required' ,
             'body' => 'required',
-            'type' => 'required',
             'cover_image' => 'image|nullable|max:1999'
-        ]);   
+        ]);    
 
-        if($request->hasFile('cover_image')) {
+         //file
+         if($request->hasFile('cover_image')) {
             //get file with extension
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
             //get only file name
@@ -135,21 +140,24 @@ class PostsController extends Controller
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             //store image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'default.jpg';
-        }
-
-        //create
-        $post = new Post;
+        } 
+        
+        //update
+        $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->type = $request->input('type');
-        $post->user_id = auth()->user()->id;      
-        $post->user_role = auth()->user()->role;
-        $post->cover_image = $fileNameToStore;
+        if($request->input('type') != 'empty'){
+            $post->type = $request->input('type');
+        }
+        if($request->hasFile('cover_image')){
+            if($post->cover_image != 'default.jpg') {
+                Storage::delete('public/cover_images/' . $post->cover_image);
+            }
+            $post->cover_image = $fileNameToStore;
+        }
         $post->save();
-
-        return redirect('/')->with('success', 'Post Created');
+        
+        return redirect('/')->with('success', 'Post Updated');
     }
 
     /**

@@ -37,6 +37,7 @@ route::resource('admin/users', 'userController');
 Route::post('comments/{post_id}', ['as' => 'comments.stored', 'uses' => 'CommentsController@store']);
 route::resource('comments', 'CommentsController');
 route::resource('admin/FAQ', 'FAQAdminController');
+route::resource('admin/keukens', 'keukenAdminController');
 route::get('/faq', 'FAQController@index');
 route::resource('profile', 'profileController');
 Route::group(['middleware' => ['auth']], function(){
@@ -96,6 +97,8 @@ Route::get('/keukenfabrikant', 'KeukenfabrikantController@index');
 Route::post('/aanvragen', 'KeukenfabrikantController@store');
 
 // Search functie
-Route::get('/search', 'userController@search');
+Route::get('finduser', 'userController@search');
+Route::get('searchtitle', 'HomeController@search');
+Route::get('findcompany', 'keukenAdminController@search');
 Route::post('/keukenfabrikant/afwijzen/{id}', 'KeukenfabrikantController@destroy');
 Route::post('/keukenfabrikant/goedkeuren/{id}', 'KeukenfabrikantController@accept');

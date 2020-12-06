@@ -21,10 +21,14 @@
             {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'placeholder' => 'Body', 'class' =>'form-control'])}}
         </div>
         <div class="form-group">
-            {{Form::label('type', 'Type')}}<br>
-            {{Form::select('type', array('' => 'Selecteer een type post', 
-                                         'news' => 'Nieuws', 
-                                         'keuken' => 'Keukens'), null, ['class' => 'box'])}}
+            <div class="form-group">
+                {{Form::label('type', 'Type')}}<br>
+                @if(auth::user()->role == 'admin')
+                {{Form::select('type', array('news' => 'Nieuws'))}}
+                @elseif(auth::user()->keukenzaak == '1')
+                {{Form::select('type', array('keuken' => 'Advertentie'))}}
+                @endif
+            </div>
         </div>
         {{Form::submit('Submit', ['class' =>'btn btn-success'])}}
     {!! Form::close() !!}

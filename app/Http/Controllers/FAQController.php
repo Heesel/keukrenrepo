@@ -43,12 +43,29 @@ class FAQController extends Controller
         $this->validate($request, [
             'question' => 'required' ,
             'answer' => 'required',
+            'cover_image' => 'image|nullable|max:1999',
         ]); 
+
+        if($request->hasFile('img')) {
+            //get file with extension
+            $filenameWithExt = $request->file('img')->getClientOriginalName();
+            //get only file name
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get only extension
+            $extension = $request->file('img')->getClientOriginalExtension();
+            //create original filename
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //store image
+            $path = $request->file('img')->storeAs('public/faq_img', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'default.jpg';
+        }
 
         //create
         $FAQ = new FAQ;
         $FAQ->question = $request->input('question');
         $FAQ->answer = $request->input('answer');
+        $FAQ->img = $fileNameToStore;
         $FAQ->save();
 
         return redirect('/')->with('success', 'FAQ Created');

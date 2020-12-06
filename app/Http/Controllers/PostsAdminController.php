@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class PostsAdminController extends Controller
 {
@@ -109,7 +110,8 @@ class PostsAdminController extends Controller
     {
         $this->validate($request, [
             'title' => 'required' ,
-            'body' => 'required'
+            'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);    
 
          //file

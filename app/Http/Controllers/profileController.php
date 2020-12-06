@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use App\Post;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class profileController extends Controller
 {
@@ -87,7 +88,8 @@ class profileController extends Controller
     {
         $this->validate($request, [
             'name' => 'required' ,
-            'email' => 'required'
+            'email' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);    
 
         if($request->hasFile('avatar')) {

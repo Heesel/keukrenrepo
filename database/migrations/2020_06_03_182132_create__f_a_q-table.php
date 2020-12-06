@@ -17,6 +17,7 @@ class CreateFAQTable extends Migration
             $table->id();
             $table->string('question');
             $table->mediumText('answer');
+            $table->string('img');
             $table->timestamps();
         });
     }
