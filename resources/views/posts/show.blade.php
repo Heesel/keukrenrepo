@@ -14,11 +14,12 @@
         <hr>
         <h5>
         {!! nl2br(e($post->body)) !!}
-        <h5>
-        <hr class="hr-post">
-    <button class="btn btn-sm btn-app" href="https://wa.me/?text=https://www.keukenfabrikant.nl"><i class="fab fa-whatsapp"></i> Delen via Whatsapp</button>
-         <div class="fb-share-button" data-href="https://www.keukenfabrikant.nl" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.keukenfabrikant.nl%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Delen</a></div>
-         <!-- <a href="http://www.facebook.com/share.php?u=httpskeukenfabrikant.nl/posts/{{$post->id}}"><div class="btn btn-sm btn-primary">Facebook2</div></a> -->
+        </h4>
+    </div>
+    <hr>
+    <h5>Deel dit via: </h5>
+        <a class="btn btn-sm btn-success btn-whatsapp" target="_blank" href="https://api.whatsapp.com/send?text=Bekijk deze keuken eens! https%3A%2F%2Fkeukenfabrikant.nl%2F{{ $post->id }}"> <i class="fab fa-whatsapp"></i> Whatsapp</a>
+         <a class="btn btn-sm btn-success btn-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://keukenfabrikant.nl/{{ $post->id }}"> <i class="fab fa-facebook"></i> Delen</a>
         <div class="row">
         @if(!Auth::guest())
             @if(Auth::user()->id == $post->user_id)
@@ -92,5 +93,6 @@
             </div>
         </div>
     {{-- </div> --}}
+</div>
 </div>
 @endsection
